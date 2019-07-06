@@ -5,7 +5,7 @@
 <template>
   <view class="page">
     <view wx:if="{{ loggedIn }}">
-      已登录
+      已登录 name:{{userInfo.name}}
       <button type="warn" @tap="logout">退出登录</button>
     </view>
     <view wx:else>
