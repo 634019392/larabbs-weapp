@@ -15,6 +15,13 @@
   .topic-title {
     padding: 15px;
   }
+  .create-reply {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+  }
 </style>
 <template>
   <view class="page">
@@ -31,6 +38,11 @@
 
           <!--向右的箭头-->
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+          <!--回复按钮-->
+          <navigator url="/pages/replies/create?topic_id={{ topic.id }}">
+            <image src="/images/reply.png" class="create-reply"></image>
+          </navigator>
         </navigator>
       </view>
       <view class="topic-title">
@@ -193,6 +205,11 @@
       // 获取当前登录用户
       this.user = await this.$parent.getCurrentUser()
       this.$apply()
+    }
+    async onShow() {
+      this.$parent.checkRefreshPages(this.getCurrentPages().pop().route, () => {
+        this.getTopic(this.topic.id)
+      })
     }
   }
 </script>
