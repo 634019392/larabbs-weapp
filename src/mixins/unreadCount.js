@@ -28,7 +28,7 @@ export default class UnreadCount extends wepy.mixin {
     if (this.unreadCount) {
       // 设置 badge
       wepy.setTabBarBadge({
-        index: 100,
+        index: 1,
         text: this.unreadCount.toString()
       })
     } else {
